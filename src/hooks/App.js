@@ -12,23 +12,21 @@ function App()
   
   const onToggle = (toggleItem) =>{
 
-    console.log(items);
-
-    const items = items.map(item =>
+    const toDoItems = items.map(item =>
       {
         if(toggleItem.target.id !== item.id) return item;
         return {...item, completed:!item.completed}
       })
 
-      setItems(items);
+      setItems(toDoItems);
   }
 
   const markAllCompleted =()=> {
-    const items = items.map(item => {
+    const toDoItems = items.map(item => {
       return {...item, completed:true};
     } )
     
-    setItems(items);
+    setItems(toDoItems);
   }
 
   return (

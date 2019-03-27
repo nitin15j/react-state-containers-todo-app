@@ -10,7 +10,6 @@ class ItemList extends Component
     }
 
     onChange =(event)=>{
-        console.log(event.target.value);
         this.setState({searchedValue:event.target.value});
     }
 
