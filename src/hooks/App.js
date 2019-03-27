@@ -1,5 +1,4 @@
 import React,{useState} from 'react';
-import uniqueId from 'lodash/uniqueId';
 import ItemList from '../components/ItemList';
 import defaultState from '../defaultState';
 
