@@ -2,23 +2,21 @@ import React,{useState} from 'react';
 import ItemList from '../components/ItemList';
 import defaultState from '../defaultState';
 
-function App()
-{
-  // Declare a new state variable
-  const [items, setItems] = useState(defaultState);
+function App(){ 
+   // Declare a new state variable
+   const [items, setItems] = useState(defaultState);
 
   const todoList = items.filter(item => !item.completed);
   const completedList = items.filter(item => item.completed);
   
   const onToggle = (toggleItem) =>{
 
-    const toDoItems = items.map(item =>
-      {
+    const toDoItems = items.map(item =>{
         if(toggleItem.target.id !== item.id) return item;
         return {...item, completed:!item.completed}
       })
 
-      setItems(toDoItems);
+      setItems(toDoItems    );
   }
 
   const markAllCompleted =()=> {

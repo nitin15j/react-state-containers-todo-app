@@ -1,8 +1,24 @@
 import React, { Component } from 'react';
+import { Provider } from 'mobx-react';
+import TodoListStore from '../mobx/models/TodoListStore';
+import ItemList from '../components/ItemList';
+import { decorate } from "mobx";
+import { observer } from "mobx-react";
 
-class App extends Component
+const App = observer(class App extends Component
 {
-    render();
-}
+    constructor() {
+        super();
+        this.store = new TodoListStore();
+      }
 
-export default App;
+    render() 
+    {
+        console.log(this.store);
+        return (
+            <ItemList title="ToDo List" items={this.store} >Hello App</ItemList>
+        )
+    }
+});
+
+export default App
