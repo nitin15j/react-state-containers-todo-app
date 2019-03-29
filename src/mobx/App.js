@@ -1,24 +1,49 @@
 import React, { Component } from 'react';
-import { Provider } from 'mobx-react';
-import TodoListStore from '../mobx/models/TodoListStore';
-import ItemList from '../components/ItemList';
-import { decorate } from "mobx";
-import { observer } from "mobx-react";
+import { observer } from 'mobx-react';
+import ItemList from './components/itemlist';
+import AddItem from './components/additem';
 
-const App = observer(class App extends Component
+import ItemStore from './models/itemstore';
+import defaultState from '../defaultState';
+
+const AppMobx = observer(class AppMobx extends Component
 {
-    constructor() {
-        super();
-        this.store = new TodoListStore();
-      }
+    itemStore;
 
+    constructor(props)
+    {
+        super(props);
+        this.itemStore = ItemStore.fromJS(defaultState);
+    }
+
+    addItem =(item) =>{
+        this.itemStore.addItem(item.value);
+    }
+
+    markAllCompleted =()=> {
+        this.itemStore.toggleAll(true);
+    }
+      
     render() 
     {
-        console.log(this.store);
+        const todoList = this.itemStore.items.filter(item => !item.completed);
+        const completedList = this.itemStore.items.filter(item => item.completed);
+
         return (
-            <ItemList title="ToDo List" items={this.store} >Hello App</ItemList>
+            <>
+            <AddItem onSubmit={this.addItem} />
+               <ItemList 
+                        title="ToDo List" 
+                        list={todoList}
+                />
+                <ItemList 
+                        title="Completed List" 
+                        list={completedList}
+                />
+                <button onClick={this.markAllCompleted}>Mark All Completed</button>
+            </>
         )
     }
 });
 
-export default App
+export default AppMobx

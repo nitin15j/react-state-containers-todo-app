@@ -1,4 +1,0 @@
-export const ADD_ITEM = "ADD_ITEM";
-export const COMPLETED_ITEM = "COMPLETED_ITEM";
-export const TOGGLE_ITEM = "TOGGLE_ITEM";
-export const MARK_ALL_ITEMS_COMPLETED = "MARK_ALL_ITEMS_COMPLETED";

@@ -15,22 +15,15 @@ class ItemList extends Component
 
     render()
     {
-        const items = this.props.list;
-      
+        const {title, list} = this.props;
         return (
                     <div>
-                        <h2>{`${this.props.title} ${items.length}`}</h2>
+                        <h2>{`${title} ${list.length}`}</h2>
                         <input type='input' onChange={this.onChange}/>
                         {
-                            items
+                            list
                             .filter(item => item.value.toLowerCase().includes(this.state.searchedValue.toLowerCase()))
-                            .map(item => <Item 
-                                                key={item.id} 
-                                                item={item} 
-                                                onItemChange={this.props.onItemChange}
-                                                onRemoveItem={this.props.onRemoveItem}
-                                                />
-                                                )
+                            .map(item => <Item key={item.id} item={item}/>)
                         }
                     </div>
                 );

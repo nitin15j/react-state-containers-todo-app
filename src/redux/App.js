@@ -1,9 +1,19 @@
 import React,{Component} from 'react';
 import ItemList from '../components/ItemList';
-import { connect } from "react-redux";
-import { toggleItem, markAllItemsCompleted } from './actions';
+import { connect } from 'react-redux';
+import {addItem,removeItem, toggleItem, markAllItemsCompleted } from './Actions';
+import AddItem from '../components/AddItem';
 
 class App extends Component{
+
+  onAddItem =(item) =>{
+    this.props.addItem(item);
+  }
+
+  onRemoveItem =(item) =>{
+    console.log('on remove item in  APP ' + item.id);
+    this.props.removeItem(item);
+  }
 
   onToggle = (toggleItem) =>{
     this.props.toggleItem({id:toggleItem.target.id});
@@ -19,18 +29,21 @@ class App extends Component{
       const completedList = this.props.items.filter(item => item.completed);
 
       return (<>
+                <AddItem onSubmit={this.onAddItem} />
+                
                 <ItemList 
                           title="ToDo List" 
                           list={todoList}
-                          onListChange={this.onToggle}>Hello App
-                </ItemList>
+                          onItemChange={this.onToggle}
+                          onRemoveItem = {this.onRemoveItem}
+                        />
 
                 <ItemList 
                           title="Completed List" 
                           list={completedList} 
-                          onListChange={this.onToggle}>
-                          Hello App
-                </ItemList>
+                          onItemChange={this.onToggle}
+                          onRemoveItem = {this.onRemoveItem}
+                        />
                 
                 <button onClick={this.markAllCompleted}>Mark All Completed</button>
 
@@ -44,6 +57,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    addItem: (item) => {
+      dispatch(addItem(item))
+    },
+    removeItem: (item) => {
+      dispatch(removeItem(item))
+    },
     toggleItem: (item) => {
       dispatch(toggleItem(item))
     },

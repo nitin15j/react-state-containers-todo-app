@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-
+import {decorate, action} from 'mobx';
 
 class Item extends Component
 {
     render()
     {
-        const {item, onItemChange, onRemoveItem} = this.props;
+        const {item} = this.props;
         return (
                 <div>
                     <label htmlFor={item.id}>
@@ -13,16 +13,28 @@ class Item extends Component
                             type='checkbox'
                             id={item.id}
                             checked={item.completed}
-                            onChange={onItemChange}
+                            onChange={this.handleToggle}
                         />
                         {item.value}
                     </label>
-                    <button className="Item-remove" onClick={() => onRemoveItem(item)}>
+                    <button className="Item-remove" onClick={this.handleRemove}>
                       Remove
                     </button>
                 </div>
         );
     }
+
+  	handleToggle = () => {
+		this.props.item.toggle();
+    };
+    
+    handleRemove = () => {
+		this.props.item.destroy();
+	};
 }
+
+decorate(Item, {
+	handleToggle: action
+  });
 
 export default Item;

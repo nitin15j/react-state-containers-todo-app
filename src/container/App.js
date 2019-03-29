@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import ItemList from '../components/ItemList';
+import AddItem from '../components/AddItem';
 import defaultState from '../defaultState';
 
 export default class App extends Component{
@@ -10,8 +11,18 @@ export default class App extends Component{
     this.state = {items:defaultState};
   }
 
+  onAddItem =(item) =>{
+
+    this.setState({items:[item,...this.state.items]})
+  }
+
+  onRemoveItem =(itemToRemove) =>{
+    this.setState({
+      items:this.state.items.filter(item => item.id !== itemToRemove.id)
+    })
+  }
+
   onToggle = (toggleItem) =>{
-    console.log(toggleItem.target.id);
     const items = this.state.items.map(item =>
       {
         if(toggleItem.target.id !== item.id) return item;
@@ -37,8 +48,19 @@ export default class App extends Component{
     const completedList = this.state.items.filter(item => item.completed);
 
 return (<>
-              <ItemList title="ToDo List" list={todoList} onListChange={this.onToggle}>Hello App</ItemList>
-              <ItemList title="Completed List" list={completedList} onListChange={this.onToggle}>Hello App</ItemList>
+              <AddItem onSubmit={this.onAddItem} />
+              <ItemList 
+                    title="ToDo List"
+                    list={todoList} 
+                    onItemChange={this.onToggle}
+                    onRemoveItem = {this.onRemoveItem}/>
+
+              <ItemList 
+                    title="Completed List" 
+                    list={completedList} 
+                    onItemChange={this.onToggle}
+                    onRemoveItem = {this.onRemoveItem}/>
+                    
               <button onClick={this.markAllCompleted}>Mark All Completed</button>
             </>);
   }

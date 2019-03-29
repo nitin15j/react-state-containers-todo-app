@@ -1,13 +1,15 @@
-import {ADD_ITEM, TOGGLE_ITEM, MARK_ALL_ITEMS_COMPLETED} from './action-types';
+import {ADD_ITEM, REMOVE_ITEM, TOGGLE_ITEM, MARK_ALL_ITEMS_COMPLETED} from './ActionTypes';
 import defaultState from '../defaultState';
 
   const initialState = {items:defaultState};
 
-  function rootReducer(state = initialState, action) {
+  function RootReducer(state = initialState, action) {
 
     switch (action.type) 
     {
       case ADD_ITEM: return {items:[...state.items, action.payload]};
+      
+      case REMOVE_ITEM: return {items:state.items.filter(item => item.id !== action.payload.id)};
     
       case TOGGLE_ITEM : 
       {
@@ -33,4 +35,4 @@ import defaultState from '../defaultState';
     }
   };
 
-  export default rootReducer;
+  export default RootReducer;
