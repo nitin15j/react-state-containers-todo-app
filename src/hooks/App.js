@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import ItemList from '../components/ItemList';
 import AddItem from '../components/AddItem';
 import defaultState from '../defaultState';
+import Button from '@material-ui/core/Button';
 
 function App(){ 
    // Declare a new state variable
@@ -56,7 +57,13 @@ function App(){
             onItemChange={onToggle} 
             onRemoveItem = {onRemoveItem}/>
       
-      <button onClick={markAllCompleted}>Mark All Completed</button>
+      <Button 
+          variant="contained"
+          color="primary" 
+          onClick={markAllCompleted} 
+          type="submit"
+          style={{margin: '25px 0 0 30%'}} >Mark All Completed
+      </Button>
     </>
   );
 }

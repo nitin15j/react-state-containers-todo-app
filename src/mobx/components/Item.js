@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import {decorate, action} from 'mobx';
+import Checkbox from '@material-ui/core/Checkbox';
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
 
 class Item extends Component
 {
@@ -9,17 +12,17 @@ class Item extends Component
         return (
                 <div>
                     <label htmlFor={item.id}>
-                        <input 
-                            type='checkbox'
+                    <Checkbox 
                             id={item.id}
                             checked={item.completed}
-                            onChange={this.handleToggle}
-                        />
+                            onChange={this.handleToggle} 
+                            />
                         {item.value}
                     </label>
-                    <button className="Item-remove" onClick={this.handleRemove}>
-                      Remove
-                    </button>
+                   
+                    <IconButton title="Delete">
+                     <DeleteIcon onClick={this.handleRemove}/>
+                    </IconButton> 
                 </div>
         );
     }

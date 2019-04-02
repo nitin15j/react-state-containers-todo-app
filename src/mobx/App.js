@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
-import ItemList from './components/itemlist';
-import AddItem from './components/additem';
-import Paper from '@material-ui/core/Paper';
-import ItemStore from './models/itemstore';
+import ItemList from './components/ItemList';
+import AddItem from './components/AddItem';
+import ItemStore from './models/ItemStore';
 import defaultState from '../defaultState';
+import Button from '@material-ui/core/Button';
 
 const AppMobx = observer(class AppMobx extends Component
 {
@@ -30,8 +30,7 @@ const AppMobx = observer(class AppMobx extends Component
         const completedList = this.itemStore.items.filter(item => item.completed);
 
         return (
-            <Paper style={{width: 400, display: 'flex'}} elevation={5}>
-                        
+                   <>     
             <AddItem onSubmit={this.addItem} />
                <ItemList 
                         title="ToDo List" 
@@ -41,8 +40,15 @@ const AppMobx = observer(class AppMobx extends Component
                         title="Completed List" 
                         list={completedList}
                 />
-                <button onClick={this.markAllCompleted}>Mark All Completed</button>
-            </Paper>
+                <Button 
+                  variant="contained"
+                  color="primary" 
+                  onClick={this.markAllCompleted} 
+                  type="submit"
+                  style={{margin: '25px 0 0 30%'}} >Mark All Completed
+                </Button>
+                </>
+           
         )
     }
 });

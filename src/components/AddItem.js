@@ -39,7 +39,6 @@ class AddItem extends Component {
           <Button 
             variant="contained"
             color="primary" 
-            onClick={this.onClick} 
             type="submit"
             style={{margin: '25px 10px', float: 'right'}} >
           Add Item

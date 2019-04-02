@@ -53,7 +53,7 @@ class App extends Component{
                   onClick={this.markAllCompleted} 
                   type="submit"
                   style={{margin: '25px 0 0 30%'}} >Mark All Completed
-              </Button>
+                </Button>
                </>);
   }
 }

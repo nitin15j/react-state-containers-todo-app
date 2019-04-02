@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import ItemList from '../components/ItemList';
 import AddItem from '../components/AddItem';
 import defaultState from '../defaultState';
+import Button from '@material-ui/core/Button';
 
 export default class App extends Component{
 
@@ -61,7 +62,13 @@ return (<>
                     onItemChange={this.onToggle}
                     onRemoveItem = {this.onRemoveItem}/>
                     
-              <button onClick={this.markAllCompleted}>Mark All Completed</button>
+              <Button 
+                  variant="contained"
+                  color="primary" 
+                  onClick={this.markAllCompleted} 
+                  type="submit"
+                  style={{margin: '25px 0 0 30%'}} >Mark All Completed
+                </Button>
             </>);
   }
 
