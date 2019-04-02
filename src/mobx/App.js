@@ -6,7 +6,7 @@ import ItemStore from './models/ItemStore';
 import defaultState from '../defaultState';
 import Button from '@material-ui/core/Button';
 
-const AppMobx = observer(class AppMobx extends Component
+const App = observer(class App extends Component
 {
     itemStore;
 
@@ -53,4 +53,4 @@ const AppMobx = observer(class AppMobx extends Component
     }
 });
 
-export default AppMobx
+export default App

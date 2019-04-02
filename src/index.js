@@ -6,9 +6,10 @@ import './index.css';
 import Grid from '@material-ui/core/Grid';
 import { AppBar, Toolbar, Typography, Paper } from '@material-ui/core';
 import App from './mobx/App';
-/*
-React Redux <Provider />, makes the Redux store available to the rest of app
-/*
+
+
+//React Redux <Provider />, makes the Redux store available to the rest of app
+
 
 ReactDOM.render(
      <Grid
@@ -32,8 +33,11 @@ ReactDOM.render(
           document.getElementById('root')
             );
 
-*/
 
+
+// For other state cotainers like Hooks, Mobx and React State, uncomment below statement
+
+/*
 ReactDOM.render(
      <Grid
           container
@@ -54,6 +58,6 @@ ReactDOM.render(
           document.getElementById('root')
             );
 
-
+*/
 
            
