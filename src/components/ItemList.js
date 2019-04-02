@@ -6,10 +6,25 @@ import TextField from '@material-ui/core/TextField';
 
 class ItemList extends Component
 {
+    pageStyle = {
+        margin:'20px 0 0 0',
+        border: '2px solid',
+        borderColor: 'white #34a853 white #fbbc05'
+    };
+
     constructor(props)
     {
         super(props);
         this.state = {searchedValue:''};
+
+        
+        this.pageStyle.borderColor = '#fbbc05 white white white'
+        
+        if(this.props.list.length > 0 && this.props.list[0].completed)  
+        this.pageStyle.borderColor = '#34a853 white white white'
+        
+       
+        
     }
 
     onChange =(event)=>{
@@ -19,9 +34,9 @@ class ItemList extends Component
     render()
     {
         const items = this.props.list;
-        const str = '#34a853';
+        
         return (
-            <Paper style={{margin:'20px 0 0 0', border: '2px solid', borderColor: '#fbbc05 #34a853 #4285f4 white'}} >
+            <Paper style = {this.pageStyle}>
             <Typography variant="h6" style={{margin:'10px 0 0 35%'}}>{`${this.props.title} (${items.length})`}</Typography>
                         <TextField
                             label="Filter here"

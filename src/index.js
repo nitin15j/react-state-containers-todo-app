@@ -5,7 +5,7 @@ import store from './redux/Store';
 import './index.css';
 import Grid from '@material-ui/core/Grid';
 import { AppBar, Toolbar, Typography, Paper } from '@material-ui/core';
-import App from './mobx/App';
+import App from './redux/App';
 
 
 //React Redux <Provider />, makes the Redux store available to the rest of app
