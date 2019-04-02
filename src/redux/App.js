@@ -3,6 +3,7 @@ import ItemList from '../components/ItemList';
 import { connect } from 'react-redux';
 import {addItem,removeItem, toggleItem, markAllItemsCompleted } from './Actions';
 import AddItem from '../components/AddItem';
+import Button from '@material-ui/core/Button';
 
 class App extends Component{
 
@@ -28,9 +29,10 @@ class App extends Component{
       const todoList = this.props.items.filter(item => !item.completed);
       const completedList = this.props.items.filter(item => item.completed);
 
-      return (<>
-                <AddItem onSubmit={this.onAddItem} />
-                
+      return (
+             <>
+                  <AddItem onSubmit={this.onAddItem} />
+           
                 <ItemList 
                           title="ToDo List" 
                           list={todoList}
@@ -45,9 +47,14 @@ class App extends Component{
                           onRemoveItem = {this.onRemoveItem}
                         />
                 
-                <button onClick={this.markAllCompleted}>Mark All Completed</button>
-
-              </>);
+                <Button 
+                  variant="contained"
+                  color="primary" 
+                  onClick={this.markAllCompleted} 
+                  type="submit"
+                  style={{margin: '25px 0 0 30%'}} >Mark All Completed
+              </Button>
+               </>);
   }
 }
 

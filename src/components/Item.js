@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-
+import Checkbox from '@material-ui/core/Checkbox';
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
 
 class Item extends Component
 {
@@ -9,17 +11,16 @@ class Item extends Component
         return (
                 <div>
                     <label htmlFor={item.id}>
-                        <input 
-                            type='checkbox'
+                        <Checkbox 
                             id={item.id}
                             checked={item.completed}
-                            onChange={onItemChange}
-                        />
+                            onChange={onItemChange} 
+                            />
                         {item.value}
                     </label>
-                    <button className="Item-remove" onClick={() => onRemoveItem(item)}>
-                      Remove
-                    </button>
+                    <IconButton title="Delete">
+                     <DeleteIcon onClick={() => onRemoveItem(item)}/>
+                    </IconButton> 
                 </div>
         );
     }

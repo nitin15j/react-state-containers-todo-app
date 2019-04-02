@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import Item from './Item';
+import Paper from '@material-ui/core/Paper';
+import { Typography } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
 
 class ItemList extends Component
 {
@@ -16,23 +19,28 @@ class ItemList extends Component
     render()
     {
         const items = this.props.list;
-      
+        const str = '#34a853';
         return (
-                    <div>
-                        <h2>{`${this.props.title} ${items.length}`}</h2>
-                        <input type='input' onChange={this.onChange}/>
-                        {
-                            items
-                            .filter(item => item.value.toLowerCase().includes(this.state.searchedValue.toLowerCase()))
-                            .map(item => <Item 
+            <Paper style={{margin:'20px 0 0 0', border: '2px solid', borderColor: '#fbbc05 #34a853 #4285f4 white'}} >
+            <Typography variant="h6" style={{margin:'10px 0 0 35%'}}>{`${this.props.title} (${items.length})`}</Typography>
+                        <TextField
+                            label="Filter here"
+                            onChange={this.onChange}
+                            style={{width:'100%'}}/>
+                        <div style={{maxHeight: '300px', overflow: 'auto'}}>
+                            {
+                                items
+                                .filter(item => item.value.toLowerCase().includes(this.state.searchedValue.toLowerCase()))
+                                .map(item => <Item 
                                                 key={item.id} 
                                                 item={item} 
                                                 onItemChange={this.props.onItemChange}
                                                 onRemoveItem={this.props.onRemoveItem}
                                                 />
-                                                )
-                        }
-                    </div>
+                                        )
+                            }
+                        </div>
+                    </Paper>
                 );
     }
 }
