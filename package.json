@@ -2,10 +2,12 @@
   "name": "react-state-containers-todo-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://nitin15j.github.io/react-state-containers-todo-app",
   "dependencies": {
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
     "@types/lodash.uniqueid": "^4.0.6",
+    "gh-pages": "^2.0.1",
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",
     "react": "^16.8.4",
@@ -16,6 +18,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
