@@ -1,0 +1,4 @@
+[build]
+base = "react-state-containers-todo-app/"
+publish = "react-state-containers-todo-app/build/"
+command = "yarn build"
