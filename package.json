@@ -2,7 +2,8 @@
   "name": "react-state-containers-todo-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://nitin15j.github.io/",
+  "homepage": "https://nitin15j.github.io/react-state-containers-todo-app/",
+  
   "dependencies": {
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
