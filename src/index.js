@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
-import store from './redux/Store';
+//import {Provider} from 'react-redux';
+//import store from './redux/Store';
 import './index.css';
 import Grid from '@material-ui/core/Grid';
 import { AppBar, Toolbar, Typography, Paper } from '@material-ui/core';
-import App from './redux/App';
+import App from './container/App';
 
 
 //React Redux <Provider />, makes the Redux store available to the rest of app
 
-
+/*
 ReactDOM.render(
      <Grid
           container
@@ -33,11 +33,11 @@ ReactDOM.render(
           document.getElementById('root')
             );
 
-
+*/
 
 // For other state cotainers like Hooks, Mobx and React State, uncomment below statement
 
-/*
+
 ReactDOM.render(
      <Grid
           container
@@ -58,6 +58,6 @@ ReactDOM.render(
           document.getElementById('root')
             );
 
-*/
+
 
            
